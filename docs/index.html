@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>Mes Ingrédients Frais</title>
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#2d6a4f">
+    <link rel="icon" href="icon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="icon-512.png">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Mes Ingrédients Frais</h1>
+        <p id="stats"></p>
+    </header>
+
+    <main id="categories-container"></main>
+
+    <div class="sticky-footer">
+        <button id="generate-btn" class="btn btn-generate" disabled>
+            Générer le prompt recette
+        </button>
+    </div>
+
+    <div id="prompt-modal" class="modal hidden">
+        <div class="modal-content">
+            <h2>Prompt recette</h2>
+            <pre id="prompt-text"></pre>
+            <div class="modal-actions">
+                <button id="copy-btn" class="btn btn-primary">Copier</button>
+                <button id="close-modal-btn" class="btn btn-secondary">Fermer</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="toast" class="toast hidden"></div>
+
+    <script src="app.js"></script>
+</body>
+</html>
