@@ -198,7 +198,7 @@ function generatePrompt() {
 
     if (lines.length === 0) return;
 
-    const prompt = `Propose-moi une recette végétarienne en utilisant au moins quelques-uns de ces ingrédients frais que j'ai sous la main (pas besoin de tous les utiliser) :\n\n${lines.join('\n')}\n\nJ'ai aussi les ingrédients de base du garde-manger (pâtes, riz, huile, épices courantes, etc.).`;
+    const prompt = `Propose-moi 5 recettes végétariennes en utilisant au moins quelques-uns de ces ingrédients frais que j'ai sous la main (pas besoin de tous les utiliser) :\n\n${lines.join('\n')}\n\nJ'ai aussi les ingrédients de base du garde-manger (pâtes, riz, huile, épices courantes, etc.).`;
 
     document.getElementById('prompt-text').textContent = prompt;
     document.getElementById('prompt-modal').classList.remove('hidden');
