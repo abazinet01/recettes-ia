@@ -26,7 +26,7 @@ Les ingrédients par défaut sont embarqués dans `docs/app.js`. L'utilisateur p
 1. L'utilisateur utilise l'app web pour cocher ses ingrédients frais en stock.
 2. Il clique "Générer le prompt recette" et copie le prompt généré.
 3. Il colle le prompt ici dans Claude Code.
-4. Proposer des recettes végétariennes réalisables avec ces ingrédients frais + les bases du garde-manger (pâtes, riz, huile, épices courantes, etc.).
+4. Proposer 5 recettes végétariennes réalisables avec ces ingrédients frais + les bases du garde-manger (pâtes, riz, huile, épices courantes, etc.).
 5. Adapter les suggestions selon les préférences exprimées.
 
 ## Langue
