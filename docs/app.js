@@ -22,10 +22,12 @@ const DEFAULT_DATA = {
     ],
     "Protéines fraîches": [
         "oeufs", "tempeh", "tofu"
-    ]
+    ],
+    "Autres": []
 };
 
 let data = null; // { categories: { "Légumes": [{nom, actif},...], ... } }
+const collapsedCategories = new Set();
 
 function init() {
     loadData();
@@ -38,6 +40,13 @@ function loadData() {
     if (saved) {
         try {
             data = JSON.parse(saved);
+            // Migration : ajouter les catégories manquantes sans écraser l'existant
+            for (const [cat, items] of Object.entries(DEFAULT_DATA)) {
+                if (!data.categories[cat]) {
+                    data.categories[cat] = items.map(nom => ({ nom, actif: false }));
+                }
+            }
+            saveData();
             return;
         } catch (e) {
             console.error('Données corrompues, réinitialisation');
@@ -67,14 +76,19 @@ function render() {
         totalActive += activeCount;
         total += ingredients.length;
 
+        const isCollapsed = collapsedCategories.has(categoryName);
+
         const section = document.createElement('section');
-        section.className = 'category';
+        section.className = isCollapsed ? 'category collapsed' : 'category';
         section.innerHTML = `
-            <div class="category-header">
+            <div class="category-header" data-toggle-category="${categoryName}" style="cursor:pointer">
                 <span>${categoryName}</span>
-                <span class="category-count">${activeCount} / ${ingredients.length}</span>
+                <div class="category-header-right">
+                    <span class="category-count">${activeCount} / ${ingredients.length}</span>
+                    <span class="category-chevron">${isCollapsed ? '▶' : '▼'}</span>
+                </div>
             </div>
-            <div class="category-items">
+            <div class="category-items${isCollapsed ? ' hidden' : ''}">
                 ${ingredients.map(ing => `
                     <div class="ingredient ${ing.actif ? '' : 'inactive'}" data-name="${ing.nom}" data-category="${categoryName}">
                         <input type="checkbox" ${ing.actif ? 'checked' : ''}>
@@ -83,7 +97,7 @@ function render() {
                     </div>
                 `).join('')}
             </div>
-            <div class="add-ingredient-row">
+            <div class="add-ingredient-row${isCollapsed ? ' hidden' : ''}">
                 <input type="text" placeholder="Ajouter..." data-category="${categoryName}">
                 <button data-add-category="${categoryName}">+</button>
             </div>
@@ -99,6 +113,20 @@ function render() {
 
 function setupEventListeners() {
     const container = document.getElementById('categories-container');
+
+    // Toggle category collapse
+    container.addEventListener('click', (e) => {
+        const header = e.target.closest('[data-toggle-category]');
+        if (header && !e.target.closest('.ingredient-delete') && !e.target.closest('.add-ingredient-row')) {
+            const cat = header.dataset.toggleCategory;
+            if (collapsedCategories.has(cat)) {
+                collapsedCategories.delete(cat);
+            } else {
+                collapsedCategories.add(cat);
+            }
+            render();
+        }
+    });
 
     // Toggle ingredient
     container.addEventListener('change', (e) => {

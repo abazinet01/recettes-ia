@@ -65,12 +65,28 @@ main {
     border-radius: 10px 10px 0 0;
     font-weight: 600;
     font-size: 0.95rem;
+    user-select: none;
+}
+
+.category.collapsed .category-header {
+    border-radius: 10px;
+}
+
+.category-header-right {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
 }
 
 .category-count {
     font-size: 0.8rem;
     opacity: 0.85;
     font-weight: 400;
+}
+
+.category-chevron {
+    font-size: 0.7rem;
+    opacity: 0.8;
 }
 
 .category-items {
