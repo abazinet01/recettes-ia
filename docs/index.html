@@ -5,39 +5,80 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>Mes Ingrédients Frais</title>
+    <title>Garde-manger</title>
     <link rel="manifest" href="manifest.json">
-    <meta name="theme-color" content="#2d6a4f">
+    <meta name="theme-color" content="#2b1d12">
     <link rel="icon" href="icon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="icon-512.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600&family=Inter:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        <h1>Mes Ingrédients Frais</h1>
-        <p id="stats"></p>
+    <header class="b-hd">
+        <div class="b-hd-inner">
+            <div class="b-hd-row">
+                <div class="b-hd-left">
+                    <div class="b-mark">●</div>
+                    <div class="b-title-block">
+                        <h1 class="b-title">Garde-manger</h1>
+                        <div class="b-sub">Tap pour basculer · maintenir pour supprimer</div>
+                    </div>
+                </div>
+                <div class="b-counter">
+                    <div class="b-counter-num" id="active-count">0</div>
+                    <div class="b-counter-lbl">en stock</div>
+                </div>
+            </div>
+            <div class="b-progress">
+                <div class="b-progress-fill" id="progress-fill"></div>
+            </div>
+            <div class="sb sb-bocaux" id="search-bar">
+                <span class="sb-icon" aria-hidden="true">
+                    <svg viewBox="0 0 18 18" width="16" height="16" fill="none">
+                        <circle cx="8" cy="8" r="5.5" stroke="currentColor" stroke-width="1.6"/>
+                        <path d="M12.5 12.5L16 16" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                    </svg>
+                </span>
+                <input type="text" id="search-input" placeholder="rechercher un ingrédient" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+                <button class="sb-clear hidden" id="search-clear" aria-label="Effacer">×</button>
+                <span class="sb-meta hidden" id="search-meta"></span>
+            </div>
+        </div>
     </header>
 
-    <main id="categories-container"></main>
+    <main class="b-main" id="categories-container"></main>
 
-    <div class="sticky-footer">
-        <button id="generate-btn" class="btn btn-generate" disabled>
-            Générer le prompt recette
-        </button>
+    <div class="b-footer">
+        <div class="b-footer-inner">
+            <div class="b-footer-stats" id="footer-stats"></div>
+            <button class="b-cta" id="generate-btn" disabled>Générer le prompt</button>
+        </div>
     </div>
 
-    <div id="prompt-modal" class="modal hidden">
-        <div class="modal-content">
-            <h2>Prompt recette</h2>
-            <pre id="prompt-text"></pre>
-            <div class="modal-actions">
-                <button id="copy-btn" class="btn btn-primary">Copier</button>
-                <button id="close-modal-btn" class="btn btn-secondary">Fermer</button>
+    <div class="b-confirm hidden" id="confirm-modal">
+        <div class="b-confirm-card">
+            <div class="b-confirm-q">Retirer <b id="confirm-name"></b> de la liste&nbsp;?</div>
+            <div class="b-confirm-actions">
+                <button id="confirm-cancel">Annuler</button>
+                <button class="danger" id="confirm-ok">Supprimer</button>
             </div>
         </div>
     </div>
 
-    <div id="toast" class="toast hidden"></div>
+    <div class="pm-backdrop hidden" id="prompt-modal">
+        <div class="pm-card">
+            <div class="pm-grip"></div>
+            <div class="pm-eyebrow">Prêt à coller dans ton IA préférée</div>
+            <h2 class="pm-title">Ton prompt recette</h2>
+            <pre class="pm-text" id="prompt-text"></pre>
+            <div class="pm-actions">
+                <button class="pm-btn pm-btn-ghost" id="close-modal-btn">Fermer</button>
+                <button class="pm-btn pm-btn-primary" id="copy-btn">Copier le prompt</button>
+            </div>
+        </div>
+    </div>
 
     <script src="app.js"></script>
 </body>

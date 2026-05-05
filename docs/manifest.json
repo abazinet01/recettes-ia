@@ -1,10 +1,10 @@
 {
-  "name": "Mes Ingrédients Frais",
-  "short_name": "Ingrédients",
+  "name": "Garde-manger",
+  "short_name": "Garde-manger",
   "start_url": "./",
   "display": "standalone",
-  "background_color": "#f0f0f0",
-  "theme_color": "#2d6a4f",
+  "background_color": "#f3ecde",
+  "theme_color": "#2b1d12",
   "icons": [
     {
       "src": "icon-192.png",
