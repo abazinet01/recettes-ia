@@ -1,16 +1,17 @@
 :root {
-    --accent: #c4501f;
-    --accent-soft: #e9b394;
-    --accent-deep: #8a3a16;
-    --ink: #2b1d12;
-    --ink-soft: #6b5340;
-    --ink-faint: #b09a82;
-    --bg: #f3ecde;
-    --paper: #f8f2e4;
-    --line: #d9c8a8;
-    --line-soft: #e8d9be;
-    --butter: #f0c97e;
-    --ok: #5b7d3a;
+    --accent: #a83a0c;
+    --accent-soft: #f2c6a6;
+    --accent-deep: #7d2c0a;
+    --ink: #201305;
+    --ink-soft: #574030;
+    --ink-faint: #6b5644;
+    --bg: #e6d9bf;
+    --paper: #fffcf5;
+    --chip: #f4ecdb;
+    --line: #b9a179;
+    --line-soft: #d3bd97;
+    --butter: #f7d287;
+    --ok: #3f5e26;
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -71,7 +72,7 @@ input, textarea {
     width: 36px; height: 36px;
     border-radius: 50%;
     background: var(--accent);
-    color: var(--ink);
+    color: var(--butter);
     display: flex; align-items: center; justify-content: center;
     font-size: 12px;
     flex-shrink: 0;
@@ -112,14 +113,14 @@ input, textarea {
 
 .b-progress {
     margin-top: 14px;
-    height: 4px;
-    background: rgba(255,255,255,0.1);
+    height: 5px;
+    background: rgba(255,255,255,0.18);
     border-radius: 999px;
     overflow: hidden;
 }
 .b-progress-fill {
     height: 100%;
-    background: var(--accent);
+    background: var(--butter);
     border-radius: 999px;
     transition: width 0.4s cubic-bezier(.3,.7,.4,1);
 }
@@ -154,7 +155,6 @@ input, textarea {
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
-    opacity: 0.6;
 }
 .sb-clear {
     width: 22px; height: 22px;
@@ -172,22 +172,21 @@ input, textarea {
     font-size: 10px;
     letter-spacing: 0.04em;
     white-space: nowrap;
-    opacity: 0.65;
     flex-shrink: 0;
 }
 
 .sb-bocaux {
     margin-top: 14px;
     padding: 10px 14px;
-    background: rgba(255,255,255,0.08);
+    background: rgba(255,255,255,0.12);
     border-radius: 12px;
     color: var(--paper);
-    border: 1px solid rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.20);
 }
 .sb-bocaux input { color: var(--paper); font-family: 'Inter', sans-serif; }
-.sb-bocaux input::placeholder { color: rgba(255,255,255,0.45); }
-.sb-bocaux .sb-icon { color: var(--accent-soft); opacity: 0.85; }
-.sb-bocaux .sb-clear { background: rgba(255,255,255,0.18); color: var(--paper); }
+.sb-bocaux input::placeholder { color: rgba(255,250,240,0.72); }
+.sb-bocaux .sb-icon { color: var(--accent-soft); }
+.sb-bocaux .sb-clear { background: rgba(255,255,255,0.28); color: var(--paper); }
 .sb-bocaux .sb-meta { color: var(--accent-soft); }
 
 /* =========================================================
@@ -205,8 +204,8 @@ input, textarea {
     border-radius: 18px;
     padding: 14px 14px 12px;
     margin-bottom: 12px;
-    box-shadow: 0 1px 0 rgba(43,29,18,0.04);
-    border: 1px solid var(--line-soft);
+    box-shadow: 0 2px 6px rgba(32,19,5,0.07);
+    border: 1px solid var(--line);
 }
 .b-cat-hd {
     width: 100%;
@@ -231,8 +230,8 @@ input, textarea {
     font-weight: 500;
     font-feature-settings: "tnum";
 }
-.b-cat-of { color: var(--ink-faint); }
-.b-cat-chev { color: var(--ink-faint); font-size: 12px; }
+.b-cat-of { color: var(--ink-soft); }
+.b-cat-chev { color: var(--ink-soft); font-size: 12px; }
 
 /* =========================================================
    CHIPS — pastilles d'ingrédients
@@ -250,7 +249,7 @@ input, textarea {
     gap: 7px;
     padding: 8px 13px 8px 11px;
     border-radius: 999px;
-    background: var(--bg);
+    background: var(--chip);
     border: 1px solid var(--line-soft);
     font-size: 14px;
     color: var(--ink-faint);
@@ -265,13 +264,14 @@ input, textarea {
     width: 7px; height: 7px;
     border-radius: 50%;
     background: var(--ink-faint);
-    opacity: 0.4;
+    opacity: 0.5;
     transition: all 0.16s;
 }
 .b-chip.on {
     background: var(--accent);
-    border-color: var(--accent);
+    border-color: var(--accent-deep);
     color: var(--paper);
+    font-weight: 600;
 }
 .b-chip.on .b-chip-dot { background: var(--butter); opacity: 1; }
 .b-chip:active { transform: scale(0.96); }
@@ -293,7 +293,7 @@ input, textarea {
     width: 130px;
     color: var(--ink);
 }
-.b-chip-add input::placeholder { color: var(--ink-faint); font-size: 14px; }
+.b-chip-add input::placeholder { color: var(--ink-soft); font-size: 14px; }
 
 /* Empty state lorsque la recherche ne trouve rien */
 .b-empty {
@@ -301,7 +301,7 @@ input, textarea {
     text-align: center;
     background: var(--paper);
     border-radius: 16px;
-    border: 1px solid var(--line-soft);
+    border: 1px solid var(--line);
 }
 .b-empty-1 { font-family: 'Fraunces', serif; font-size: 20px; font-weight: 500; color: var(--ink); margin-bottom: 4px; }
 .b-empty-2 { font-size: 13px; color: var(--ink-soft); }
@@ -335,7 +335,7 @@ input, textarea {
     letter-spacing: 0.04em;
 }
 .b-footer-stats b { color: var(--accent); font-weight: 600; }
-.b-footer-dot { color: var(--ink-faint); }
+.b-footer-dot { color: var(--ink-soft); }
 
 .b-cta {
     width: 100%;
@@ -347,11 +347,18 @@ input, textarea {
     font-weight: 600;
     letter-spacing: 0.005em;
     font-family: 'Fraunces', serif;
-    box-shadow: 0 6px 18px rgba(43,29,18,0.18);
+    box-shadow: 0 6px 18px rgba(32,19,5,0.22);
     transition: transform 0.15s;
 }
 .b-cta:active:not(:disabled) { transform: scale(0.98); }
-.b-cta:disabled { opacity: 0.35; box-shadow: none; cursor: default; }
+.b-cta:disabled {
+    background: var(--chip);
+    color: var(--ink-soft);
+    border: 1px solid var(--line);
+    opacity: 1;
+    box-shadow: none;
+    cursor: default;
+}
 
 /* =========================================================
    MODALE de confirmation suppression
@@ -359,7 +366,7 @@ input, textarea {
 
 .b-confirm {
     position: fixed; inset: 0;
-    background: rgba(43,29,18,0.6);
+    background: rgba(32,19,5,0.7);
     display: flex; align-items: flex-end; justify-content: center;
     z-index: 50;
     animation: b-fade 0.18s;
@@ -385,12 +392,13 @@ input, textarea {
     flex: 1;
     padding: 14px;
     border-radius: 12px;
-    background: var(--bg);
+    background: var(--chip);
+    border: 1px solid var(--line);
     font-weight: 600;
     font-size: 14px;
     color: var(--ink);
 }
-.b-confirm-actions button.danger { background: var(--accent); color: var(--paper); }
+.b-confirm-actions button.danger { background: var(--accent); border-color: var(--accent-deep); color: var(--paper); }
 
 /* =========================================================
    MODALE prompt
@@ -398,7 +406,7 @@ input, textarea {
 
 .pm-backdrop {
     position: fixed; inset: 0;
-    background: rgba(43,29,18,0.5);
+    background: rgba(32,19,5,0.65);
     display: flex; align-items: flex-end; justify-content: center;
     z-index: 100;
     animation: pm-fade 0.2s;
@@ -413,7 +421,7 @@ input, textarea {
     max-height: 80vh;
     overflow-y: auto;
     animation: pm-slide 0.26s cubic-bezier(.3,.7,.4,1);
-    box-shadow: 0 -8px 32px rgba(43,29,18,0.18);
+    box-shadow: 0 -8px 32px rgba(32,19,5,0.28);
 }
 @keyframes pm-slide { from { transform: translateY(40px); } }
 .pm-grip {
@@ -439,7 +447,7 @@ input, textarea {
     color: var(--ink);
 }
 .pm-text {
-    background: var(--bg);
+    background: var(--chip);
     padding: 16px;
     border-radius: 12px;
     font-family: 'Fraunces', serif;
@@ -449,7 +457,7 @@ input, textarea {
     white-space: pre-wrap;
     word-wrap: break-word;
     margin-bottom: 16px;
-    border: 1px solid var(--line-soft);
+    border: 1px solid var(--line);
 }
 .pm-actions { display: flex; gap: 10px; }
 .pm-btn {
@@ -462,6 +470,6 @@ input, textarea {
     transition: transform 0.12s;
 }
 .pm-btn:active { transform: scale(0.97); }
-.pm-btn-ghost { background: var(--bg); color: var(--ink); }
+.pm-btn-ghost { background: var(--chip); border: 1px solid var(--line); color: var(--ink); }
 .pm-btn-primary { background: var(--accent); color: var(--paper); }
 .pm-btn-primary.is-copied { background: var(--ok); }
